@@ -15,63 +15,56 @@ const Container = styled.div`
 const Title = styled(motion.h2)`
   font-size: 2.5rem;
   color: ${props => props.theme.colors.text};
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
 `;
 
 const Description = styled(motion.p)`
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
   color: ${props => props.theme.colors.text};
-  margin-bottom: 3rem;
   text-align: center;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
 `;
 
 const SkillsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 `;
 
-const SkillCard = styled(motion.div)`
-  background-color: #f3f4f6;
+const SkillCard = styled(motion.div)<{ color: string }>`
+  background-color: ${props => props.color};
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`;
-
-const SkillTitle = styled.h3`
-  font-size: 1.5rem;
-  color: ${props => props.theme.colors.primary};
-  margin-bottom: 1.5rem;
-  text-align: center;
-`;
-
-const SkillsList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  color: white;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 `;
 
-const SkillItem = styled.li`
-  background-color: white;
-  padding: 0.75rem;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 500;
-  color: ${props => props.theme.colors.text};
-  transition: transform 0.2s ease;
+const SkillTitle = styled.h3`
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+`;
 
-  &:hover {
-    transform: translateY(-2px);
-  }
+const SkillList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const SkillItem = styled.li`
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
 `;
 
 const Profile = () => {
@@ -79,35 +72,51 @@ const Profile = () => {
 
   const translations = {
     es: {
-      title: 'Sobre Mí',
-      description: 'Desarrolladora versátil con una sólida base en desarrollo frontend y backend, capaz de adaptarse rápidamente a nuevas tecnologías gracias a fundamentos sólidos en programación. Cuento con experiencia en el desarrollo de proyectos en inteligencia artificial, análisis de datos y aprendizaje automático, aplicando técnicas avanzadas para resolver problemas complejos. He trabajado en entornos de alta presión, colaborando eficazmente en equipos multidisciplinarios, demostrando liderazgo y comunicación asertiva. Mi experiencia abarca tanto el desarrollo frontend como backend, asegurando soluciones eficientes y escalables.',
+      title: 'Perfil',
+      description: 'Soy una desarrolladora Full Stack apasionada por la tecnología y la innovación. Me especializo en crear aplicaciones web modernas y eficientes, combinando diseño atractivo con funcionalidad robusta.',
       hardSkills: 'Habilidades Técnicas',
       softSkills: 'Habilidades Blandas',
       languages: 'Idiomas',
-      spanish: 'Español: Nativo',
-      english: 'Inglés: B2',
+      proficiency: 'Nivel de Proficiencia',
+      english: 'Inglés',
+      spanish: 'Español',
+      viewCertificate: 'Ver Certificado'
     },
     en: {
-      title: 'About Me',
-      description: 'Adaptable developer with a strong foundation in frontend and backend development, capable of seamlessly transitioning between technologies due to solid programming fundamentals. Experienced in AI, data analysis, and machine learning, having developed projects in these fields. Skilled in working under pressure, collaborating in multidisciplinary teams, and demonstrating leadership with effective communication. Proficient in both frontend and backend development, ensuring efficient and scalable solutions.',
+      title: 'Profile',
+      description: 'I am a Full Stack developer passionate about technology and innovation. I specialize in creating modern and efficient web applications, combining attractive design with robust functionality.',
       hardSkills: 'Technical Skills',
       softSkills: 'Soft Skills',
       languages: 'Languages',
-      spanish: 'Spanish: Native',
-      english: 'English: B2',
-    },
+      proficiency: 'Proficiency Level',
+      english: 'English',
+      spanish: 'Spanish',
+      viewCertificate: 'View Certificate'
+    }
   };
 
   const hardSkills = [
-    'Python', 'C++', 'C#', 'Java', 'SQL', 'Git',
-    'TypeScript', 'JavaScript', 'Django', 'Flask',
-    'FastAPI', 'Next.js', 'React', 'Tailwind CSS',
-    'Vite', 'MUI', 'Bootstrap'
+    'Python',
+    'JavaScript',
+    'React',
+    'Node.js',
+    'SQL',
+    'Git',
+    'Docker',
+    'AWS',
+    'Machine Learning',
+    'Data Analysis'
   ];
 
   const softSkills = [
-    'Critical Thinking', 'Responsibility', 'Teamwork',
-    'Creativity', 'Resilience', 'Emotional Intelligence'
+    'Trabajo en Equipo',
+    'Comunicación Efectiva',
+    'Resolución de Problemas',
+    'Gestión de Tiempo',
+    'Adaptabilidad',
+    'Creatividad',
+    'Liderazgo',
+    'Pensamiento Analítico'
   ];
 
   return (
@@ -127,59 +136,62 @@ const Profile = () => {
         >
           {translations[language].description}
         </Description>
-
         <SkillsGrid>
           <SkillCard
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            color="#007bff"
           >
             <SkillTitle>{translations[language].hardSkills}</SkillTitle>
-            <SkillsList>
+            <SkillList>
               {hardSkills.map((skill) => (
                 <SkillItem key={skill}>{skill}</SkillItem>
               ))}
-            </SkillsList>
+            </SkillList>
           </SkillCard>
           <SkillCard
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
+            color="#ff5733"
           >
             <SkillTitle>{translations[language].softSkills}</SkillTitle>
-            <SkillsList>
+            <SkillList>
               {softSkills.map((skill) => (
                 <SkillItem key={skill}>{skill}</SkillItem>
               ))}
-            </SkillsList>
+            </SkillList>
           </SkillCard>
           <SkillCard
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
+            color="#33ff57"
           >
             <SkillTitle>{translations[language].languages}</SkillTitle>
-            <SkillsList>
+            <SkillList>
+              <SkillItem>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                  <span>{translations[language].english}</span>
+                  <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>{translations[language].proficiency}: B2</span>
+                  <a
+                    href="https://www.efset.org/cert/2b4c8c"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'white', textDecoration: 'underline', fontSize: '0.8rem' }}
+                  >
+                    {translations[language].viewCertificate}
+                  </a>
+                </div>
+              </SkillItem>
               <SkillItem>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
                   <span>{translations[language].spanish}</span>
-                  <span style={{ fontSize: '0.8rem', color: props => props.theme.colors.primary }}>Nativo</span>
+                  <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>{translations[language].proficiency}: Nativo</span>
                 </div>
               </SkillItem>
-              <SkillItem>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-                  <a 
-                    href="https://app.voxy.com/certificates/proficiency-test/67e2a9f7f1209c29e9e13e98" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                  >
-                    {translations[language].english}
-                  </a>
-                  <span style={{ fontSize: '0.8rem', color: props => props.theme.colors.primary }}>B2 - Certificado</span>
-                </div>
-              </SkillItem>
-            </SkillsList>
+            </SkillList>
           </SkillCard>
         </SkillsGrid>
       </Container>

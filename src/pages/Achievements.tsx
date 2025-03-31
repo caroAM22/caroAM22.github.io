@@ -45,26 +45,18 @@ const AchievementHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
-const AchievementName = styled.h4`
-  font-size: 1.2rem;
-  color: ${props => props.theme.colors.text};
-  margin: 0;
-  font-weight: 600;
-`;
-
-const AchievementDate = styled.span`
+const AchievementName = styled.h3`
+  font-size: 1.25rem;
   color: ${props => props.theme.colors.primary};
-  font-weight: 500;
-  font-size: 0.9rem;
+  margin: 0;
 `;
 
 const AchievementDetails = styled.p`
   color: ${props => props.theme.colors.text};
-  margin: 0.5rem 0;
-  font-size: 1rem;
+  margin: 0;
   line-height: 1.6;
 `;
 
@@ -75,7 +67,7 @@ const AchievementLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  margin-top: 1rem;
   transition: color 0.2s ease;
 
   &:hover {
